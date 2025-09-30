@@ -2305,7 +2305,7 @@ let availableContent = [];
 // Carica tutti i contenuti disponibili
 async function loadAvailableContent() {
   try {
-    const response = await fetch('https://vixproxy-kmv2qg.fly.dev//home/available');
+    const response = await fetch('https://vixproxy-kmv2qg.fly.dev/home/available');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     
     const data = await response.json();
