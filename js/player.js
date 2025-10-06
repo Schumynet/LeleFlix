@@ -1,6 +1,6 @@
 // js/player.js
 
-const PROGRESS_API_URL = 'https://api.leleflix.store/progress/save';
+const PROGRESS_API_URL = 'https://vixproxy-kmv2qg.fly.dev/progress/save';
 class VideoPlayer {
     constructor() {
         this.lastProgressSave = 0;
@@ -13,7 +13,7 @@ this.lastSavedTime = 0;
         this.lastTapTime = 0;
                 this.currentStreamId = null;
         this.abortController = null;
-        this.PROXY_BASE_URL = 'https://api.leleflix.store/proxy';
+        this.PROXY_BASE_URL = 'https://vixproxy-kmv2qg.fly.dev/proxy';
 
         // Riferimenti agli elementi del player
         this.videoPlayer = document.getElementById('videoPlayer');
