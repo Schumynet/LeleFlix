@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Video Proxy</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #eee; text-align: center; padding: 2em; }
+    video { width: 80%; max-width: 800px; margin-top: 2em; border: 2px solid #444; }
+  </style>
+</head>
+<body>
+  <h1>🎬 Test Video Proxy</h1>
+  <video id="video" controls autoplay></video>
+
+  <script>
+    // Sostituisci con un ID reale esistente nel tuo sistema
+    const movieId = '12345';
+
+    fetch(`https://vixproxy-kmv2qg.fly.dev/proxy/movie/${movieId}`)
+      .then(res => res.json())
+      .then(data => {
+        const video = document.getElementById('video');
+        if (Hls.isSupported()) {
+          const hls = new Hls();
+          hls.loadSource(data.url);
+          hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = data.url;
+        } else {
+          alert('Il tuo browser non supporta HLS');
+        }
+      })
+      .catch(err => {
+        console.error('Errore nel caricamento del video:', err);
+        alert('Impossibile caricare il video');
+      });
+  </script>
+</body>
+</html>
